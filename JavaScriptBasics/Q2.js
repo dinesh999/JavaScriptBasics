@@ -11,25 +11,25 @@ class MetadataParser {
     this._version = version;
   }
   
-  setKeyField(keyField){
-    _keyField=keyField;
-  }
-  setChannel(channel){
-    _channel=channel;
-  }
-  setVersion(version){
-    _version=version;
-  }
+  // setKeyField(keyField){
+  //   _keyField=keyField;
+  // }
+  // setChannel(channel){
+  //   _channel=channel;
+  // }
+  // setVersion(version){
+  //   _version=version;
+  // }
   
-  getKeyField(keyField){
-    return _keyField;
-  }
-  getChannel(channel){
-    return _channel;
-  }
-  getVersion(version){
-    return _version;
-  }
+  // getKeyField(keyField){
+  //   return _keyField;
+  // }
+  // getChannel(channel){
+  //   return _channel;
+  // }
+  // getVersion(version){
+  //   return _version;
+  // }
 
   getKeyFields(inputArray) {
     let keyFieldsArray=[];
