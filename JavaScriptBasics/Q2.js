@@ -1,62 +1,48 @@
-// Code goes here
-
-// Code goes here  
 class MetadataParser {
-  _version = 0.0;
-  _channel = "";
-  _keyField = "";
   constructor(version, channel, keyField) {
     this._channel = channel;
     this._keyField = keyField;
     this._version = version;
   }
   
-  // setKeyField(keyField){
-  //   _keyField=keyField;
-  // }
-  // setChannel(channel){
-  //   _channel=channel;
-  // }
-  // setVersion(version){
-  //   _version=version;
-  // }
-  
-  // getKeyField(keyField){
-  //   return _keyField;
-  // }
-  // getChannel(channel){
-  //   return _channel;
-  // }
-  // getVersion(version){
-  //   return _version;
-  // }
-
-  getKeyFields(inputArray) {
-    let keyFieldsArray=[];
-    inputArray.forEach(function(element) {
-      keyFieldsArray.push(element._keyField);
-    });
-    return keyFieldsArray;
+  setKeyField(keyField){
+    this._keyField=keyField;
+  }
+  setChannel(channel){
+    this._channel=channel;
+  }
+  setVersion(version){
+    this._version=version;
   }
   
-  groupObjectsBy(inputArray){
-    var keyFieldsMap=new Map();
-    inputArray.forEach(function(element) {
-      var elementArray=[];
-      elementArray.push(element);
-      if(keyFieldsMap.has(element._keyField)){
-        var existingElementsArray=[];
-        existingElementsArray=keyFieldsMap.get(element._keyField);
-        keyFieldsMap.set(element._keyField,existingElementsArray.concat(elementArray));
+  getKeyField(keyField){
+    return this._keyField;
+  }
+  getChannel(channel){
+    return this._channel;
+  }
+  getVersion(version){
+    return this._version;
+  }
+
+  getKeyFields(inputArray) {
+    let keyFieldsArray = inputArray.map(element => element.getKeyField());
+    return keyFieldsArray;
+  }
+
+  groupObjectsBy(inputArray, key){
+    let keyFieldsMap = {};
+    inputArray.forEach(element => {
+      if(keyFieldsMap[element[key]]){
+        keyFieldsMap[element[key]].push(element);
       }else{
-        keyFieldsMap.set(element._keyField,elementArray);
+        keyFieldsMap[element[key]] = [element];
       }
       
     });
     return keyFieldsMap;
   }
 }
-
 let md1 = new MetadataParser(1, "ch1", "A");
 let md2 = new MetadataParser(2, "ch2", "A");
 let md3 = new MetadataParser(3, "ch3", "B");
@@ -75,7 +61,7 @@ inputArray.push(md5);
 keyFields=md.getKeyFields(inputArray);
 console.log(keyFields)
 
-keyFieldsMap=md.groupObjectsBy(inputArray);
+keyFieldsMap=md.groupObjectsBy(inputArray, '_channel');
 console.log(keyFieldsMap);
 
 // console.log(metaDataParser);
