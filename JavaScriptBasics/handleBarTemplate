@@ -1,0 +1,33 @@
+{{#each this}}
+<products>
+<product>
+<baseId>{{baseId}}</baseId>
+<isActive>{{isActive}}</isActive>
+<contentType>
+    <contentTypeValue>{{contentType.[1].value}}</contentTypeValue>
+    <contentTypeValue>{{contentType.[2].value}}</contentTypeValue>
+</contentType>
+<features>
+    <feature>{{feature.[1]}}</feature>
+    <feature>{{feature.[2]}}</feature>
+</features>
+<childProducts>
+    {{#childProducts}}
+    <childProduct>
+        <baseId>{{baseId}}</baseId>
+        <isActive>{{isActive}}<isActive>
+        <features>
+            <feature>{{feature.[1]}}</feature>
+            <feature>{{feature.[2]}}</feature>
+        </features>
+        <searchTerms>
+            <searchTermValue>{{searchTerms.[0]}}</searchTermValue>
+            <searchTermValue>{{searchTerms.[1]}}</searchTermValue>
+            <searchTermValue>{{searchTerms.[2]}}</searchTermValue>
+        </searchTerms>
+    </childProduct>
+    {{/childProducts}}
+</childProducts>
+</product>
+</products>
+{{/each}}
